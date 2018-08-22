@@ -2,6 +2,12 @@ import numpy as np
 from math import exp
 from math import log
 import matplotlib.pyplot as plt
+import Utility as ut
+
+b=100000000
+for i in range(18):
+    b=b/10
+    print(ut.secsToTime(b))
 
 N=12
 lam = (0.4468,2082240,0.00002455,0.00000754,0.00000016,330350.4,0.035,0.0001643,0.00000000222,433036.8,11955686.4)
@@ -14,29 +20,6 @@ print("Activity".ljust(14),"Half-Life".ljust(25),"Initial Population".ljust(20),
 for i in range(0, len(lam)):
     print(str(lam[i]).ljust(14),str(log(2)/lam[i]).ljust(25),str(pop0s[i]).ljust(20),sep="",end="\n")
 print()
-
-def secsToTime(secs):
-    smallUnits = ("s", "ms", "us", "ns", "ps")
-    bigUnits = ("s", "m", "h", "d", "y")
-    bigUnitsConverters = (1, 60, 60, 24, 365)
-    assert(secs>=0)
-    i=1
-    units="s"
-    if secs<1:
-        while secs<1:
-            secs *=1000
-            units = smallUnits[i]
-            i+=1
-        else:
-            print ("small")
-            return ("%.2f%s" % (secs,units))
-    while secs /bigUnitsConverters[i] >1:
-        secs /=bigUnitsConverters[i]
-        units = bigUnits[i]
-        i+=1
-    else:
-        print ("big")
-        return ("%.2f%s" % (secs,units))
 
 def pop(n, t):
     if n!=N-1:
