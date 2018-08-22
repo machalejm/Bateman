@@ -1,7 +1,7 @@
 def secsToTime(secs):
     smallUnits = ("s", "ms", "us", "ns", "ps")
     bigUnits = ("s", "m", "h", "d", "y")
-    bigUnitsConverters = (1, 60, 60, 24, 365)
+    bigUnitsConverters = (60, 60, 24, 365)
     assert(secs>=0)
     
     i=0
@@ -20,4 +20,7 @@ def secsToTime(secs):
     
     return ("%.2f%s" % (secs,units))
 
-while s = input("please enter a time")
+s=""
+while s !="q":
+    s=(input("please enter a time in seconds:\n"))
+    print(secsToTime(float(s)))
