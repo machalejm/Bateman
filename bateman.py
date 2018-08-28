@@ -4,22 +4,19 @@ from math import log
 import matplotlib.pyplot as plt
 import Utility as ut
 
-b=100000000
-for i in range(18):
-    b=b/10
-    print(ut.secsToTime(b))
 
-N=12
-lam = (0.4468,2082240,0.00002455,0.00000754,0.00000016,330350.4,0.035,0.0001643,0.00000000222,433036.8,11955686.4)
+lam = (0.4468,0.6,0.7,0.00000754,0.00000016,330350.4,0.035,0.0001643,0.00000000222,433036.8,11955686.4)
+N=len(lam)+1
+lam =np.log(2)/lam
 # lam = (1.2,0.2,0.3,0.4,0.5,0.51,0.7,0.8,0.9,1,1.1)
 assert(len(lam)==N-1)
 pop0s = np.zeros(N)
 pop0s[0] = 1
 
-print("Activity".ljust(14),"Half-Life".ljust(25),"Initial Population".ljust(20), sep="")
-for i in range(0, len(lam)):
-    print(str(lam[i]).ljust(14),str(log(2)/lam[i]).ljust(25),str(pop0s[i]).ljust(20),sep="",end="\n")
-print()
+#print("Activity".ljust(14),"Half-Life".ljust(25),"Initial Population".ljust(20), sep="")
+#for i in range(0, len(lam)):
+#    print(str(lam[i]).ljust(14),str(log(2)/lam[i]).ljust(25),str(pop0s[i]).ljust(20),sep="",end="\n")
+#print()
 
 def pop(n, t):
     if n!=N-1:
@@ -45,13 +42,13 @@ def pop(n, t):
             resi += pop0s[i]*resj
         return pop0s[n] + resi
 
-print("Population of nuclide 1 after 1 half life is: ", pop(0,log(2)/lam[0]))
+#print("Population of nuclide 1 after 1 half life is: ", pop(0,log(2)/lam[0]))
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
 STEP=100
-times = np.linspace(0,40,STEP)
+times = np.linspace(0,10,STEP)
 pops = np.zeros((N,STEP))
 for i in range(N):
     for j in range(STEP):

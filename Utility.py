@@ -20,7 +20,8 @@ def secsToTime(secs):
     
     return ("%.2f%s" % (secs,units))
 
-s=""
-while s !="q":
-    s=(input("please enter a time in seconds:\n"))
-    print(secsToTime(float(s)))
+if __name__ == "__main__":
+    s=""
+    while s !="q":
+        s=(input("please enter a time in seconds:\n"))
+        print(secsToTime(float(s)))
